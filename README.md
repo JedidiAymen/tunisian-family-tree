@@ -60,9 +60,14 @@ docker run -d \
 ### 3. Initialize the database
 
 ```bash
-# Wait a few seconds for PostgreSQL to start, then:
+# Wait a few seconds for PostgreSQL to start, then run schema:
 docker exec -i tun_family_pg psql -U postgres -d tun_family_dev < server/sql/schema.sql
+
+# Load sample data (14 families, 94 people, 129 relationships):
+docker exec -i tun_family_pg psql -U postgres -d tun_family_dev < server/sql/seed_data.sql
 ```
+
+> 💡 **Tip:** The seed data includes complete Tunisian families with cross-family marriages, multiple generations, and realistic data from cities like Tunis, Sfax, Sousse, and more!
 
 ### 4. Start the Server
 
@@ -86,10 +91,21 @@ npm run dev            # Runs on http://localhost:5173
 Navigate to `http://localhost:5173`
 
 **Default test accounts:**
-| Email | Password | Family |
-|-------|----------|--------|
-| admin@benali.tn | password123 | Ben Ali |
-| admin@trabelsi.tn | password123 | Trabelsi |
+| Email | Password | Role | Family |
+|-------|----------|------|--------|
+| admin@benali.tn | password123 | ADMIN | Ben Ali |
+| editor@benali.tn | password123 | EDITOR | Ben Ali |
+| admin@trabelsi.tn | password123 | ADMIN | Trabelsi |
+| tarek@bouazizi.tn | password123 | ADMIN | Bouazizi |
+| habib@hammami.tn | password123 | ADMIN | Hammami |
+| salem@jebali.tn | password123 | ADMIN | Jebali |
+| brahim@khelifi.tn | password123 | ADMIN | Khelifi |
+| slaheddine@marzougui.tn | password123 | ADMIN | Marzougui |
+| moncef@nasri.tn | password123 | ADMIN | Nasri |
+| adel@oueslati.tn | password123 | ADMIN | Oueslati |
+| abdallah@saidi.tn | password123 | ADMIN | Saidi |
+| salah@turki.tn | password123 | ADMIN | Turki |
+| mustapha@zarrouk.tn | password123 | ADMIN | Zarrouk |
 
 ---
 
