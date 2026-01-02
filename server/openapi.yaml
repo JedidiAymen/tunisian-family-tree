@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Tunisian Family API
+  version: 0.1.0
+servers:
+  - url: http://localhost:4000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        familyId:
+          type: string
+paths:
+  /api/v1/auth/register:
+    post:
+      summary: Register + create family
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                familyName:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Created
+  /api/v1/auth/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: OK
+  /api/v1/tree/graph:
+    get:
+      summary: Get graph for family
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Graph

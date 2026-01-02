@@ -1,0 +1,55 @@
+### Register
+POST http://localhost:4000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "familyName": "Al-Bouz",
+  "email": "admin@albouz.test",
+  "password": "password123"
+}
+
+### Login
+POST http://localhost:4000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@albouz.test",
+  "password": "password123"
+}
+
+### Create person (replace <TOKEN>)
+POST http://localhost:4000/api/v1/people
+Authorization: Bearer <TOKEN>
+Content-Type: application/json
+
+{
+  "first_name": "Mohamed",
+  "last_name_raw": "Ben Ali",
+  "notes": "From Tunis"
+}
+
+### PUT person (full replace)
+PUT http://localhost:4000/api/v1/people/<PERSON_ID>
+Authorization: Bearer <TOKEN>
+Content-Type: application/json
+
+{
+  "first_name": "Mohamed",
+  "last_name_raw": "Ben Ali",
+  "notes": "Updated via PUT"
+}
+
+### Create edge
+POST http://localhost:4000/api/v1/tree/edges
+Authorization: Bearer <TOKEN>
+Content-Type: application/json
+
+{
+  "fromPersonId": "<PERSON1>",
+  "toPersonId": "<PERSON2>",
+  "type": "PARENT_OF"
+}
+
+### Get graph
+GET http://localhost:4000/api/v1/tree/graph
+Authorization: Bearer <TOKEN>
