@@ -7,6 +7,11 @@ const regionsRoutes = require('./routes/regions.routes');
 const expertiseRoutes = require('./routes/expertise.routes');
 const peopleRoutes = require('./routes/people.routes');
 const treeRoutes = require('./routes/tree.routes');
+const progressRoutes = require('./routes/progress.routes');
+const eventsRoutes = require('./routes/events.routes');
+const collaborationRoutes = require('./routes/collaboration.routes');
+const graphRoutes = require('./routes/graph.routes');
+const usersRoutes = require('./routes/users.routes');
 
 const app = express();
 app.use(express.json());
@@ -19,6 +24,11 @@ app.use('/api/v1/regions', regionsRoutes);
 app.use('/api/v1/expertise', expertiseRoutes);
 app.use('/api/v1/people', peopleRoutes);
 app.use('/api/v1/tree', treeRoutes);
+app.use('/api/v1/progress', progressRoutes);
+app.use('/api/v1/events', eventsRoutes);
+app.use('/api/v1/collaboration', collaborationRoutes);
+app.use('/api/v1/graph', graphRoutes);
+app.use('/api/v1/users', usersRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err);
